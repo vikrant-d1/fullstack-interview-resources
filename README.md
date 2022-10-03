@@ -13,9 +13,7 @@
 |7  | [Linkedin skill assessments quizzes](https://github.com/vikrant-d1/linkedin-skill-assessments-quizzes) |
 |8  | [Javascript Interview Questions 1](https://github.com/vikrant-d1/javascript-interview-questions-1) |
 |9  | [Javascript Interview Questions 2](https://github.com/vikrant-d1/javascript-interview-questions) |
-|10  | [Essential JavaScript Interview Questions](https://github.com/vikrant-d1/123-Essential-JavaScript-Interview-Questions) |
-
-
+|10 | [Essential JavaScript Interview Questions](https://github.com/vikrant-d1/123-Essential-JavaScript-Interview-Questions) |
 |11  | [Javascript Questions](https://github.com/vikrant-d1/javascript-questions) |
 |12  | [Nodejs Interview Questions](https://github.com/vikrant-d1/nodejs-interview-questions) |
 |13  | [Javascript Code Challenges](https://github.com/vikrant-d1/javascript-code-challenges) |
