@@ -19,4 +19,5 @@ In summary….it’s easy to W.R.I.T.E. !
 **T** ime yourself
 **E** xit smart
 
-![alt learning]((images/learning.webp?raw=true)
+<img src="https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.pn](https://github.com/vikrant-d1/Learn/tree/_vikrant/images/learning.webp" />
+
