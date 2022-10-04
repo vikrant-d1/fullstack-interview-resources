@@ -19,4 +19,4 @@ In summary….it’s easy to W.R.I.T.E. !
 **T** ime yourself
 **E** xit smart
 
-![alt learning]((https://github.com/vikrant-d1/Learn/tree/_vikrant/images/learning.webp?raw=true)
+![alt learning]((images/learning.webp?raw=true)
