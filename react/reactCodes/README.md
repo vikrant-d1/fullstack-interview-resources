@@ -55,4 +55,14 @@ function useIsInViewport(ref) {
 
 ```
 
+### Use portal for popup
+```javascript
+import { createPortal } from "react-dom";
+
+<div id="#camera-modal"></div>
+
+***id plase in _document.js file***
+
+ {otpModalStatus && createPortal(<ProfileUpdateOtpVerification openModal={otpModalStatus} profileStatus={true} phoneNumber={is_mobile_verified} countryCode={phone_code} otpPopup={setOtpModalStatus} email={is_email_verified} setOtpStatus={setOtpStatus} />, document.querySelector('#camera-modal'))}
+```
 **[⬆ Back to Top](#table-of-contents)**
