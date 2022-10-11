@@ -65,4 +65,78 @@ import { createPortal } from "react-dom";
 
  {otpModalStatus && createPortal(<ProfileUpdateOtpVerification openModal={otpModalStatus} profileStatus={true} phoneNumber={is_mobile_verified} countryCode={phone_code} otpPopup={setOtpModalStatus} email={is_email_verified} setOtpStatus={setOtpStatus} />, document.querySelector('#camera-modal'))}
 ```
+
+### Use use form hook
+
+```javascript
+import { useForm } from 'react-hook-form';
+
+  const { register, handleSubmit, setValue,reset, formState: { errors },
+  } = useForm();
+  
+  //set value in inpute field
+  const handleEditClick = (contact) => {
+      setEditContactId(contact.id);
+      setValue('id',contact.id);
+  };
+  
+  const cameraSubmit = (data) => {
+    setLoadingStatus(true);
+    if (editContactId) {
+      const newContacts = [...contacts];
+      updateCamera(data);
+      setContacts(newContacts);
+    } else {
+      setEditContactId(null);
+      addCamera(data);
+    }
+  };
+  
+  
+    <form onSubmit={handleSubmit(cameraSubmit)} >
+ 
+        <input
+          type="text"
+          className="field_info"
+          {...props?.register("name",{ required: true })}
+        />
+        {props?.errors?.name && <p className={'text-danger mt-1'}>Name is required.</p>}
+    
+        <input
+          type="text"
+          className="field_info"
+          {...props?.register("location")}
+        />
+        
+      
+        <input
+          type="text"
+          className="field_info"
+          {...props?.register("longitude",{ required: true, pattern:/^(\-?\d+(\.\d+)?)/g })}
+        />
+        {props?.errors?.longitude && <p className={'text-danger mt-1'}>Longitude is required.</p>}
+    
+        <input
+          type="text"
+          className="field_info"
+          {...props?.register("latitude",{ required: true, pattern: /\w*(\-?\d+(\.\d+)?)$/g })}
+        />
+          {props?.errors?.latitude && <p className={'text-danger mt-1'}>Latitude is required.</p>}
+     
+        <span className="table_ico" onClick={()=>props?.locationTogglePopup()}>
+          <MapOutline />
+        </span>
+     
+        <input
+          type="url"
+          name="url"
+          className="field_info"
+          {...props?.register("url",{ required: true , pattern: /(https?:\/\/)?([\da-z\.-]+)\.([a-z]{2,6})([\/\w\.-]*)*\/?/g})}
+        />
+      {props?.errors?.url && <p className={'text-danger mt-1'}>Url is required.</p>}
+    
+     </form>
+```
+
+
 **[⬆ Back to Top](#table-of-contents)**
