@@ -10,7 +10,7 @@
 |4  | [Image compress?](#Image-compress) |
 
 
-### 1.Get Check if an Element is in the Viewport in React.js
+### 1. Get Check if an Element is in the Viewport in React.js
 ```javascript
 import {useEffect, useRef, useState, useMemo} from 'react';
 
@@ -59,7 +59,7 @@ function useIsInViewport(ref) {
 
 ```
 
-### 2.Use portal for popup
+### 2. Use portal for popup
 ```javascript
 import { createPortal } from "react-dom";
 
@@ -70,7 +70,7 @@ import { createPortal } from "react-dom";
  {otpModalStatus && createPortal(<ProfileUpdateOtpVerification openModal={otpModalStatus} profileStatus={true} phoneNumber={is_mobile_verified} countryCode={phone_code} otpPopup={setOtpModalStatus} email={is_email_verified} setOtpStatus={setOtpStatus} />, document.querySelector('#camera-modal'))}
 ```
 
-### 3.Use use form hook
+### 3. Use use form hook
 
 ```javascript
 import { useForm } from 'react-hook-form';
@@ -143,7 +143,7 @@ import { useForm } from 'react-hook-form';
     
      </form>
 ```
-### 4.Image compress
+### 4. Image compress
 
 ```javascript
 
