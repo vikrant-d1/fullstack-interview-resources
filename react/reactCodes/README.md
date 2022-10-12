@@ -59,7 +59,7 @@ function useIsInViewport(ref) {
 
 ```
 
-### Use portal for popup
+### 2. Use portal for popup
 ```javascript
 import { createPortal } from "react-dom";
 
@@ -70,7 +70,7 @@ import { createPortal } from "react-dom";
  {otpModalStatus && createPortal(<ProfileUpdateOtpVerification openModal={otpModalStatus} profileStatus={true} phoneNumber={is_mobile_verified} countryCode={phone_code} otpPopup={setOtpModalStatus} email={is_email_verified} setOtpStatus={setOtpStatus} />, document.querySelector('#camera-modal'))}
 ```
 
-### Use use form hook
+### 3. Use use form hook
 
 ```javascript
 import { useForm } from 'react-hook-form';
@@ -143,7 +143,7 @@ import { useForm } from 'react-hook-form';
     
      </form>
 ```
-### Image compress
+### 4. Image compress
 
 ```javascript
 
