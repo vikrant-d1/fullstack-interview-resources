@@ -5,6 +5,10 @@
 | No. | Questions |
 | --- | --------- |
 |1  | [Get Check if an Element is in the Viewport in React.js?](#Get-Check-if-an-Element-is-in-the-Viewport-in-React.js) |
+|2  | [Use portal for popup](#Use portal for popup) |
+|3  | [Use use form hook](#Use use form hook) |
+|4  | [Image compress](#Image compress) |
+
 
 ### 1.Get Check if an Element is in the Viewport in React.js
 ```javascript
@@ -139,6 +143,29 @@ import { useForm } from 'react-hook-form';
     
      </form>
 ```
+### Image compress
 
+```javascript
+
+import Compressor from 'compressorjs';
+
+ new Compressor(uploaded_file, {
+        quality: 0.6,
+        success(result) {
+          let blobTofile = new File([result], result.name, {type: result?.type, lastModified: Date.now()});
+          setSelectedOriginalImage(URL.createObjectURL(blobTofile));
+          files.push({ image: fileData, type: "image" });
+        },
+        error(err) {
+          dispatch(
+            Notify.setNotification({
+              message: err.message,
+              type: "error",
+            })
+          );
+        },
+      });
+
+```
 
 **[⬆ Back to Top](#table-of-contents)**
