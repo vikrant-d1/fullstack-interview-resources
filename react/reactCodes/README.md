@@ -168,4 +168,117 @@ import Compressor from 'compressorjs';
 
 ```
 
+### 5. Data url to file
+
+```javascript
+export function dataURLtoFile(dataurl, filename) {
+  var arr = dataurl.split(","),
+    mime = arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[1]),
+    n = bstr.length,
+    u8arr = new Uint8Array(n);
+
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new File([u8arr], `${filename}.${mime.split("/")[1]}`, { type: mime });
+}
+```
+
+
+### 5. File to base64
+
+```javascript
+export const getBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
+};
+```
+
+### Video file to thumbnail creator
+
+```javascript 
+export const getVideoCover = (file, seekTo = 0.0) => {
+  return new Promise((resolve, reject) => {
+    const videoPlayer = document.createElement("video");
+    videoPlayer.setAttribute("src", URL.createObjectURL(file));
+    videoPlayer.load();
+    videoPlayer.addEventListener("error", (ex) => {
+      reject("error when loading video file", ex);
+    });
+    videoPlayer.addEventListener("loadedmetadata", () => {
+      if (videoPlayer.duration < seekTo) {
+        reject("video is too short.");
+        return;
+      }
+      setTimeout(() => {
+        videoPlayer.currentTime = seekTo;
+      }, 200);
+      videoPlayer.addEventListener("seeked", () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = videoPlayer.videoWidth;
+        canvas.height = videoPlayer.videoHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
+        ctx.canvas.toBlob(
+          (blob) => {
+            resolve(blob);
+          },
+          "image/jpeg",
+          0.75
+        );
+      });
+    });
+  });
+};
+```
+### Rename Uploaded file
+
+```javascript
+export const renameFile = (originalFile) => {
+  let d = new Date();
+  let filetype = originalFile.type;
+  const [ft, fileEx] = filetype.split("/");
+  if (fileEx == "quicktime") {
+    fileEx = "mov";
+  }
+  let newName = d.getTime();
+  return new File([originalFile], newName + "." + fileEx, {
+    type: originalFile.type,
+    lastModified: originalFile.lastModified,
+  });
+};
+```
+
+### Detect Browser
+
+```javascript
+export const browserDetect = () => {
+  let userAgent = navigator.userAgent;
+  let browserName;
+  if (userAgent.match(/chrome|chromium|crios/i)) {
+    browserName = "chrome";
+  } else if (userAgent.match(/firefox|fxios/i)) {
+    browserName = "firefox";
+  } else if (userAgent.match(/safari/i)) {
+    browserName = "safari";
+  } else if (userAgent.match(/opr\//i)) {
+    browserName = "opera";
+  } else if (userAgent.match(/edg/i)) {
+    browserName = "edge";
+  } else {
+    browserName = "No browser detection";
+  }
+  return browserName;
+};
+
+```
+
+
+
+
 **[⬆ Back to Top](#table-of-contents)**
