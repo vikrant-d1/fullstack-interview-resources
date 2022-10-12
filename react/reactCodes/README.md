@@ -5,9 +5,9 @@
 | No. | Questions |
 | --- | --------- |
 |1  | [Get Check if an Element is in the Viewport in React.js?](#Get-Check-if-an-Element-is-in-the-Viewport-in-React.js) |
-|2  | [Use portal for popup?](#Use portal for popup) |
-|3  | [Use use form hook?](#Use use form hook) |
-|4  | [Image compress?](#Image compress) |
+|2  | [Use portal for popup?](#Use-portal-for-popup) |
+|3  | [Use use form hook?](#Use-use-form-hook) |
+|4  | [Image compress?](#Image-compress) |
 
 
 ### 1.Get Check if an Element is in the Viewport in React.js
