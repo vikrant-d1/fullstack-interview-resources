@@ -71,8 +71,10 @@ import { createPortal } from "react-dom";
 ```javascript
 import { useForm } from 'react-hook-form';
 
-  const { register, handleSubmit, setValue,reset, formState: { errors },
+  const { register, handleSubmit, setValue, reset, watch, formState: { errors },
   } = useForm();
+    const watchAllFields = watch(); // when pass nothing as argument, you are watching everything
+     const watchImages = watch(["images"]); 
   
   //set value in inpute field
   const handleEditClick = (contact) => {
