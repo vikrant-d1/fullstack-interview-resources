@@ -1,7 +1,7 @@
 # Welcome to React Hooks
 
 
-### 1. Use the use
+### 1. Use the use memo
 ```javascript
 const Item = memo(({id, value, onChange}) => {
   return (
