@@ -508,3 +508,6 @@ module.exports = {
 ```
 
 
+### 35.When to Use Server-Side rendering vs Static Generation in Next.js ?
+[click here >>](https://dev.to/dmuraco3/when-to-user-server-side-rendering-vs-static-generation-in-nextjs-8ab)
+

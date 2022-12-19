@@ -4,9 +4,13 @@
 
 | No. | Questions |
 | --- | --------- |
-|1  | [Get Check if an Element is in the Viewport in React.js?](#Get-Check-if-an-Element-is-in-the-Viewport-in-React.js) |
+|1  | [Get Check if an Element is in the Viewport in React.js?](#1.-Get-Check-if-an-Element-is-in-the-Viewport-in-React.js) |
+|2  | [Use portal for popup?](#2-Use-portal-for-popup) |
+|3  | [Use use form hook?](#3-Use-use-form-hook) |
+|4  | [Image compress?](#4-Image-compress) |
 
-### 1.Get Check if an Element is in the Viewport in React.js
+
+### 1. Get Check if an Element is in the Viewport in React.js
 ```javascript
 import {useEffect, useRef, useState, useMemo} from 'react';
 
@@ -54,5 +58,227 @@ function useIsInViewport(ref) {
 }
 
 ```
+
+### 2. Use portal for popup
+```javascript
+import { createPortal } from "react-dom";
+
+<div id="#camera-modal"></div>
+
+***id plase in _document.js file***
+
+ {otpModalStatus && createPortal(<ProfileUpdateOtpVerification openModal={otpModalStatus} profileStatus={true} phoneNumber={is_mobile_verified} countryCode={phone_code} otpPopup={setOtpModalStatus} email={is_email_verified} setOtpStatus={setOtpStatus} />, document.querySelector('#camera-modal'))}
+```
+
+### 3. Use use form hook
+
+```javascript
+import { useForm } from 'react-hook-form';
+
+  const { register, handleSubmit, setValue, reset, watch, formState: { errors },
+  } = useForm();
+    const watchAllFields = watch(); // when pass nothing as argument, you are watching everything
+     const watchImages = watch(["images"]); 
+  
+  //set value in inpute field
+  const handleEditClick = (contact) => {
+      setEditContactId(contact.id);
+      setValue('id',contact.id);
+  };
+  
+  const cameraSubmit = (data) => {
+    setLoadingStatus(true);
+    if (editContactId) {
+      const newContacts = [...contacts];
+      updateCamera(data);
+      setContacts(newContacts);
+    } else {
+      setEditContactId(null);
+      addCamera(data);
+    }
+  };
+  
+  
+    <form onSubmit={handleSubmit(cameraSubmit)} >
+ 
+        <input
+          type="text"
+          className="field_info"
+          {...props?.register("name",{ required: true })}
+        />
+        {props?.errors?.name && <p className={'text-danger mt-1'}>Name is required.</p>}
+    
+        <input
+          type="text"
+          className="field_info"
+          {...props?.register("location")}
+        />
+        
+      
+        <input
+          type="text"
+          className="field_info"
+          {...props?.register("longitude",{ required: true, pattern:/^(\-?\d+(\.\d+)?)/g })}
+        />
+        {props?.errors?.longitude && <p className={'text-danger mt-1'}>Longitude is required.</p>}
+    
+        <input
+          type="text"
+          className="field_info"
+          {...props?.register("latitude",{ required: true, pattern: /\w*(\-?\d+(\.\d+)?)$/g })}
+        />
+          {props?.errors?.latitude && <p className={'text-danger mt-1'}>Latitude is required.</p>}
+     
+        <span className="table_ico" onClick={()=>props?.locationTogglePopup()}>
+          <MapOutline />
+        </span>
+     
+        <input
+          type="url"
+          name="url"
+          className="field_info"
+          {...props?.register("url",{ required: true , pattern: /(https?:\/\/)?([\da-z\.-]+)\.([a-z]{2,6})([\/\w\.-]*)*\/?/g})}
+        />
+      {props?.errors?.url && <p className={'text-danger mt-1'}>Url is required.</p>}
+    
+     </form>
+```
+### 4. Image compress
+
+```javascript
+
+import Compressor from 'compressorjs';
+
+ new Compressor(uploaded_file, {
+        quality: 0.6,
+        success(result) {
+          let blobTofile = new File([result], result.name, {type: result?.type, lastModified: Date.now()});
+          setSelectedOriginalImage(URL.createObjectURL(blobTofile));
+          files.push({ image: fileData, type: "image" });
+        },
+        error(err) {
+          dispatch(
+            Notify.setNotification({
+              message: err.message,
+              type: "error",
+            })
+          );
+        },
+      });
+
+```
+
+### 5. Data url to file
+
+```javascript
+export function dataURLtoFile(dataurl, filename) {
+  var arr = dataurl.split(","),
+    mime = arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[1]),
+    n = bstr.length,
+    u8arr = new Uint8Array(n);
+
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new File([u8arr], `${filename}.${mime.split("/")[1]}`, { type: mime });
+}
+```
+
+
+### 5. File to base64
+
+```javascript
+export const getBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
+};
+```
+
+### Video file to thumbnail creator
+
+```javascript 
+export const getVideoCover = (file, seekTo = 0.0) => {
+  return new Promise((resolve, reject) => {
+    const videoPlayer = document.createElement("video");
+    videoPlayer.setAttribute("src", URL.createObjectURL(file));
+    videoPlayer.load();
+    videoPlayer.addEventListener("error", (ex) => {
+      reject("error when loading video file", ex);
+    });
+    videoPlayer.addEventListener("loadedmetadata", () => {
+      if (videoPlayer.duration < seekTo) {
+        reject("video is too short.");
+        return;
+      }
+      setTimeout(() => {
+        videoPlayer.currentTime = seekTo;
+      }, 200);
+      videoPlayer.addEventListener("seeked", () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = videoPlayer.videoWidth;
+        canvas.height = videoPlayer.videoHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
+        ctx.canvas.toBlob(
+          (blob) => {
+            resolve(blob);
+          },
+          "image/jpeg",
+          0.75
+        );
+      });
+    });
+  });
+};
+```
+### Rename Uploaded file
+
+```javascript
+export const renameFile = (originalFile) => {
+  let d = new Date();
+  let filetype = originalFile.type;
+  const [ft, fileEx] = filetype.split("/");
+  if (fileEx == "quicktime") {
+    fileEx = "mov";
+  }
+  let newName = d.getTime();
+  return new File([originalFile], newName + "." + fileEx, {
+    type: originalFile.type,
+    lastModified: originalFile.lastModified,
+  });
+};
+```
+
+### Detect Browser
+
+```javascript
+export const browserDetect = () => {
+  let userAgent = navigator.userAgent;
+  let browserName;
+  if (userAgent.match(/chrome|chromium|crios/i)) {
+    browserName = "chrome";
+  } else if (userAgent.match(/firefox|fxios/i)) {
+    browserName = "firefox";
+  } else if (userAgent.match(/safari/i)) {
+    browserName = "safari";
+  } else if (userAgent.match(/opr\//i)) {
+    browserName = "opera";
+  } else if (userAgent.match(/edg/i)) {
+    browserName = "edge";
+  } else {
+    browserName = "No browser detection";
+  }
+  return browserName;
+};
+
+```
+
+
+
 
 **[⬆ Back to Top](#table-of-contents)**
