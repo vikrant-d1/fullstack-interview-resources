@@ -1,7 +1,10 @@
 # Welcome to React Hooks
 
 
-### 1. Use the use
+### 1. Use the use memo
+
+Using memo will cause React to skip rendering a component if its props have not changed.This can improve performance.
+
 ```javascript
 const Item = memo(({id, value, onChange}) => {
   return (

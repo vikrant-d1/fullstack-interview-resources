@@ -19,4 +19,3 @@ In summary….it’s easy to W.R.I.T.E. !
 **T** ime yourself
 **E** xit smart
 
-

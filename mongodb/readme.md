@@ -120,7 +120,7 @@ Use the $in operator to select documents where the value of a field equals any
 db.zips.find({ city: { $in: ["PHOENIX", "CHICAGO"] } });
 ```
 
-###Finding Documents by Using Comparison Operators
+### Finding Documents by Using Comparison Operators
 
 - Review the following comparison operators: $gt, $lt, $lte, and $gte.
   $gt
