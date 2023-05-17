@@ -734,11 +734,17 @@ When you open the compiled JavaScript file in a debugger, you can use the map fi
   
   ### 37. Difference  between javascript array and typescript array
  In general, there is no fundamental difference between a JavaScript array and a TypeScript array since TypeScript is a superset of JavaScript and arrays are a built-in data structure in both languages. However, there are some differences in how arrays are defined and used in TypeScript compared to JavaScript:
+  
 **Type Annotations:** In TypeScript, arrays can be annotated with specific types. For example, you can define an array of strings using the syntax string[]. This ensures that only string values can be added to the array and any attempts to add values of a different type will result in a compile-time error. In JavaScript, arrays can contain any type of value, and there is no built-in type checking.
+  
 **Type Inference:** TypeScript can infer the type of an array based on its initial values. For example, if you define an array with values [1, 2, 3], TypeScript can infer that the type of the array is number[]. In JavaScript, there is no built-in type inference.
-Readonly Arrays: TypeScript provides a ReadonlyArray type that can be used to define arrays that cannot be modified after creation. This can be useful in cases where you want to ensure that an array is not accidentally modified.
+  
+**Readonly Arrays**: TypeScript provides a ReadonlyArray type that can be used to define arrays that cannot be modified after creation. This can be useful in cases where you want to ensure that an array is not accidentally modified.
+  
 **Iteration:** TypeScript provides built-in support for iterating over arrays using the for...of loop. This can make it easier to work with arrays in TypeScript compared to JavaScript, where you need to use a for loop or other methods to iterate over an array.
+  
 **Optional Array Elements:** In TypeScript, you can define an array with optional elements using the ? syntax. For example, you can define an array with elements of type string | undefined using the syntax Array<string | undefined>. In JavaScript, there is no built-in way to define optional array elements.
+  
 Overall, while there is no fundamental difference between JavaScript and TypeScript arrays, TypeScript provides additional features such as type annotations, type inference, and readonly arrays that can make it easier to work with arrays in large-scale applications.
   
   
