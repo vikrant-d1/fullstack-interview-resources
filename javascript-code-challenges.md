@@ -573,7 +573,116 @@ function compressString(str) {
 console.log(compressString("aaabb")); // Output: "a3b2"
 ```
 
-Feel free to let me know if you'd like the code for any specific challenge from the list, and I'll provide it for you.
+
+
+// solution 1
+
+let arree = [3,4,[4,5],[[3]],[[[[[4]]]]],3,5];
+
+const arrFlatArr = (arr)=>{
+     let flattenArr = [];
+      for(let i=0; i<arr.length; i++){
+     if(Array.isArray(arr[i])){
+    flattenArr= flattenArr.concat(arrFlatArr(arr[i]))
+     
+     }else{
+     flattenArr.push(arr[i]); 
+     }
+       }
+     return flattenArr;
+}
+
+console.log('check data',arrFlatArr(arree));
+
+// solution 2
+let Input = [{"name":"Aima","grade":"A"},{"name":"Arjun","grade":"A+"},{"name":"Iram","grade":"B+"},{"name":"Zia","grade":"C"},{"name":"Reah","grade":"B"},{"name":"Karan","grade":"A"},{"name":"Mithum","grade":"B"},{"name":"Ankur","grade":"B+"}]
+
+ function sortObj(arr){
+    if(arr.length>0){
+   return arr.sort((a,b)=>{
+      let aObj = a.grade.toUpperCase();
+      let bObj = b.grade.toUpperCase();
+      if(aObj>bObj){
+        return -1;
+      }else if(aObj<bObj){
+        return 1;
+      }else{
+        return 0;
+      }
+    })
+  }
+ }
+ console.log(sortObj(Input));
+
+
+
+// solution 3
+let a = 'JavaScript is awesome';
+let b = a.split(' ');
+let reversString = '';
+
+for(let i=b.length-1; i>=0; i--){
+console.log(b[i])
+   reversString+= b[i]+' ';
+}
+
+console.log('string', reversString);
+
+
+
+
+// solution 4
+//word aslo revese
+let a = 'JavaScript is awesome';
+let b = a.split(' ');
+for(let i=b.length-1; i>=0; i--){
+console.log(b[i])
+   let letterLenth =b[i].split('');
+   let reverseword = '';
+    for(let j=b[i].length-1; i>=0; j--){
+    reverseword =letterLenth[j];
+    }
+   reversString+= reverseword+' ';
+}
+
+console.log('word reverse', reversString);
+
+
+// solution 5
+const findPair = (arr, target) => {
+  const seenValues = new Set();
+
+  for (let i = 0; i < arr.length; i++) {
+    const complement = target - arr[i];
+    if (seenValues.has(complement)) {
+      return [arr[i], complement];
+    }
+    seenValues.add(arr[i]);
+  }
+
+  return "No pair [1, 9] found.";
+};
+
+const a = [2, 3, 4, 3, 3, 2, 4, 9, 1, 2, 5, 5];
+const result = findPair(a, 10); // Looking for the pair [1, 9] which sums to 10
+console.log(result);
+
+
+//All word upper case first letter capital
+
+const transformName = (name:string) => {
+    let updated = name.toLowerCase();
+    let allWords = updated.split(' ');
+    let updatedName = [];
+    for (let i = 0; i < allWords.length; i++) {
+      let firstLetter = allWords[i].substring(0, 1);
+      let restOfWord = allWords[i].substring(1);
+      let fullWord = firstLetter.toUpperCase() + restOfWord;
+      updatedName.push(fullWord);
+    }
+    return updatedName.join(' ');
+  }
+
 
 
 
