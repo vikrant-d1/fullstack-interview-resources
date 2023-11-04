@@ -576,7 +576,7 @@ console.log(compressString("aaabb")); // Output: "a3b2"
 
 
 // solution 1
-
+```javascript
 let arree = [3,4,[4,5],[[3]],[[[[[4]]]]],3,5];
 
 const arrFlatArr = (arr)=>{
@@ -593,7 +593,7 @@ const arrFlatArr = (arr)=>{
 }
 
 console.log('check data',arrFlatArr(arree));
-
+```
 // solution 2
 let Input = [{"name":"Aima","grade":"A"},{"name":"Arjun","grade":"A+"},{"name":"Iram","grade":"B+"},{"name":"Zia","grade":"C"},{"name":"Reah","grade":"B"},{"name":"Karan","grade":"A"},{"name":"Mithum","grade":"B"},{"name":"Ankur","grade":"B+"}]
 
