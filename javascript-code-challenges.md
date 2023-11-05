@@ -595,6 +595,7 @@ const arrFlatArr = (arr)=>{
 console.log('check data',arrFlatArr(arree));
 ```
 // solution 2
+```javascript
 let Input = [{"name":"Aima","grade":"A"},{"name":"Arjun","grade":"A+"},{"name":"Iram","grade":"B+"},{"name":"Zia","grade":"C"},{"name":"Reah","grade":"B"},{"name":"Karan","grade":"A"},{"name":"Mithum","grade":"B"},{"name":"Ankur","grade":"B+"}]
 
  function sortObj(arr){
@@ -613,10 +614,11 @@ let Input = [{"name":"Aima","grade":"A"},{"name":"Arjun","grade":"A+"},{"name":"
   }
  }
  console.log(sortObj(Input));
-
+```
 
 
 // solution 3
+```javascript
 let a = 'JavaScript is awesome';
 let b = a.split(' ');
 let reversString = '';
@@ -627,12 +629,13 @@ console.log(b[i])
 }
 
 console.log('string', reversString);
-
+```
 
 
 
 // solution 4
-//word aslo revese
+### word aslo revese
+```javascript
 let a = 'JavaScript is awesome';
 let b = a.split(' ');
 for(let i=b.length-1; i>=0; i--){
@@ -646,9 +649,10 @@ console.log(b[i])
 }
 
 console.log('word reverse', reversString);
-
+```
 
 // solution 5
+```javascript
 const findPair = (arr, target) => {
   const seenValues = new Set();
 
@@ -666,10 +670,10 @@ const findPair = (arr, target) => {
 const a = [2, 3, 4, 3, 3, 2, 4, 9, 1, 2, 5, 5];
 const result = findPair(a, 10); // Looking for the pair [1, 9] which sums to 10
 console.log(result);
+```
 
-
-//All word upper case first letter capital
-
+### All word upper case first letter capital
+```javascript
 const transformName = (name:string) => {
     let updated = name.toLowerCase();
     let allWords = updated.split(' ');
@@ -682,7 +686,7 @@ const transformName = (name:string) => {
     }
     return updatedName.join(' ');
   }
-
+```
 
 
 
