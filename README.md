@@ -1,6 +1,6 @@
 ### Full Stack Interview Preparation Repository
 
-Welcome to the **Full Stack Interview Preparation Repository**! This repository is a comprehensive resource for developers preparing for Full Stack developer interviews. It contains a curated collection of questions, answers, coding challenges, and study materials that cover both front-end and back-end development topics.
+Welcome to the **Full Stack Interview Preparation**! This repository is a comprehensive resource for developers preparing for Full Stack developer interviews. It contains a curated collection of questions, answers, coding challenges, and study materials that cover both front-end and back-end development topics.
 
 #### How to Use
 
