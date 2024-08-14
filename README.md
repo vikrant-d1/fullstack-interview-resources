@@ -1,4 +1,13 @@
-# Welcome to learning world :)
+### Full Stack Interview Preparation Repository
+
+Welcome to the **Full Stack Interview Preparation Repository**! This repository is a comprehensive resource for developers preparing for Full Stack developer interviews. It contains a curated collection of questions, answers, coding challenges, and study materials that cover both front-end and back-end development topics.
+
+#### How to Use
+
+1. **Clone the repository**: `git clone https://github.com/vikrant-d1/fullstack-interview-resources`
+2. **Navigate through the sections**: Explore the folders categorized by topic.
+3. **Practice coding challenges**: Test your skills with provided exercises.
+4. **Contribute**: Feel free to add more questions, solutions, or improve existing content.
 
 ### Table of Contents
 
